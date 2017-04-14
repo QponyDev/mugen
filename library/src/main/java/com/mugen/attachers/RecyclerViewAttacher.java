@@ -59,8 +59,8 @@ public class RecyclerViewAttacher extends BaseAttacher<RecyclerView, RecyclerVie
                 mPrevFirstVisibleItem = firstVisibleItem;
             }
 
-            if (mIsLoadMoreEnabled
-                    && (mCurScrollingDirection == ScrollDirection.UP)) {
+            if (mIsLoadMoreEnabled && (mCurScrollingDirection == ScrollDirection.UP ||
+                    (mCurScrollingDirection == ScrollDirection.SAME && checkIfLastItemIsVisible()))) {
                 //We only need to paginate if user scrolling near the end of the list
 
                 if (!mMugenCallbacks.isLoading()
@@ -83,4 +83,8 @@ public class RecyclerViewAttacher extends BaseAttacher<RecyclerView, RecyclerVie
             }
         }
     };
+
+    private boolean checkIfLastItemIsVisible() {
+        return mRecyclerViewHelper.findLastVisibleItemPosition() == mRecyclerViewHelper.getItemCount() - 1;
+    }
 }
