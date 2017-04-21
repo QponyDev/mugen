@@ -24,7 +24,6 @@ public class RecyclerViewAttacher extends BaseAttacher<RecyclerView, RecyclerVie
         mAdapterView.addOnScrollListener(onScrollListener);
     }
 
-    @Override
     public RecyclerView.OnScrollListener getInternalOnScrollListener() {
         return onScrollListener;
     }
