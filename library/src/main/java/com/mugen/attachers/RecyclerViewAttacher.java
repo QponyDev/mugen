@@ -24,6 +24,10 @@ public class RecyclerViewAttacher extends BaseAttacher<RecyclerView, RecyclerVie
         mAdapterView.addOnScrollListener(onScrollListener);
     }
 
+    public RecyclerViewPositionHelper getRecyclerViewHelper() {
+        return mRecyclerViewHelper;
+    }
+
     private final RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
